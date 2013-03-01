@@ -1,7 +1,7 @@
 <?php
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author     Martin Schulte <schulte-martin [at] web [dot] de>
+ * @author     Martin Schulte <lebowski[at]corvus[dot]uberspace[dot]de>
  */
 //error_reporting (E_ALL | E_STRICT);  
 //ini_set ('display_errors', 'On');
