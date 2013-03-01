@@ -1,0 +1,44 @@
+
+div.dokuwiki div.authorlist{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+}
+
+div.dokuwiki div.authorlist span.author,
+div.dokuwiki div.authorlist ul.authorlist li.level1 div.author{
+  color: __text__;
+  font-weight: normal;
+  background: transparent url(images/dot.png) 0px center no-repeat;
+  padding: 0px 0px 0px 12px;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+div.dokuwiki div.authorlist span.authoruserpage,
+div.dokuwiki div.authorlist ul.authorlist li.level1 div.authoruserpage{
+  color: __text__;
+  font-weight: normal;
+  background: transparent url(images/user.png) 0px center no-repeat;
+  padding: 0px 0px 0px 16px;
+  margin-right: 8px;
+}
+
+div.dokuwiki div.authorlist ul.authorlist li.level1 {
+  margin-left: 0;
+  list-style-type:none;
+}
+
+div.dokuwiki div.authorlist span.authoremail,
+div.dokuwiki div.authorlist ul.authorlist li.level1 div.authoremail {
+  color: __text__;
+  font-weight: normal;
+  background: transparent url(images/email.png) 0px center no-repeat;
+  padding: 0px 0px 0px 16px;
+  margin-right: 8px;
+}
+
+div.dokuwiki div.authorlist ul.authorlist li.level1 {
+  margin-left: 0;
+  list-style-type:none;
+}

@@ -1,0 +1,7 @@
+base info
+author Martin Schulte
+email 
+date 2013-02-19
+name authorlist Plugin
+desc Displays all contributors/authors of a wikipage
+url http://dokuwiki.org/plugin:authorlist
