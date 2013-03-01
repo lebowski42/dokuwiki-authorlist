@@ -18,33 +18,31 @@ require_once(DOKU_PLUGIN.'action.php');
 
 class action_plugin_authorlist extends DokuWiki_Action_Plugin{
 
+	
     function register(&$contr) {
        // $contr->register_hook('TPL_ACT_RENDER','AFTER',$this,'renderAuthorlist');
-        $contr->register_hook('PARSER_WIKITEXT_PREPROCESS','BEFORE',$this,'renderAuthorlist1');
+       $contr->register_hook('PARSER_WIKITEXT_PREPROCESS','BEFORE',$this,'appendAuthors');
     }
     
-    
-      function renderAuthorlist1(&$event, $param){
-		global $INFO;	
-		//if($event->data != 'show' && $event->data != 'preview') return false;
-		//if(!$INFO['exists'] && $event->data != 'preview') return false;
-		//echo "<h1>hier: ".$event->data."</h1>";
-		//if(strpos($event->data, '~~AUTHORS:off~~') != false) return false;
-		//
-		if($this->getConf('showheading'))  $event->data .= DOKU_LF."======".strip_tags($this->getConf('heading'))."======".DOKU_LF;
-		$event->data .= "~~AUTHORS~~";
-		echo "<h1>los gehts</h1>";
-		echo $event->data;
-		echo "<h1>STOP</h1>";
-        return true;
+    /**
+     * Add heading and ~~AUTHORS~~ to each wikiside.
+     */
+    function appendAuthors(&$event, $param){
+		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false;
+		if($this->getConf('automatic')){
+			global $ACT;
+			if($ACT != 'show') return false;
+			if($this->getConf('showheading'))  $event->data .= DOKU_LF."======".strip_tags($this->getConf('heading'))."======".DOKU_LF;
+			
+			$event->data .= "~~AUTHORS~~";
+			return true;
+		}
 	}
     
     function renderAuthorlist(&$event, $param){
 		global $INFO;		
 		if($event->data != 'show' && $event->data != 'preview') return false;
 		if(!$INFO['exists'] && $event->data != 'preview') return false;
-		echo "<h1>hier: ".$event->data."</h1>";
-		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false;
 		$al = $this->loadHelper('authorlist',false);
 		if (!$al) return false;
 		$al->setOptions($INFO['id'],array());

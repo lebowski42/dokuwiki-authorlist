@@ -1,6 +1,5 @@
 <?php
 /**
- * Plugin Skeleton: Displays "Hello World!"
  *
  * Syntax: ~~AUTHORS:param1&param2~~ will be replaced by List of authors
  * 
@@ -64,13 +63,13 @@ class syntax_plugin_authorlist extends DokuWiki_Syntax_Plugin {
     }
 	
 
-   /**
+    /**
     * Handler to prepare matched data for the rendering process.
     *
-    * @param $match String The text matched by the patterns., somthing like ~~AUTHORS:displayaslist&tooltip=fullname~~
+    * @param $match String The text matched by the patterns, somthing like ~~AUTHORS:displayaslist&tooltip=fullname...~~
     * @param $state Integer The lexer state for the match, doesn't matter because we only substitute.
     * @param $pos Integer The character position of the matched text.
-    * @param $handler Object Reference to the Doku_Handler object.
+    * @param $handler Object reference to the Doku_Handler object.
     * @return Integer The current lexer state for the match.
     */
     function handle($match, $state, $pos, &$handler){
@@ -96,8 +95,7 @@ class syntax_plugin_authorlist extends DokuWiki_Syntax_Plugin {
         if($mode == 'xhtml' && !$data['off']){
 			global $INFO;
 			$al = &plugin_load('helper', 'authorlist'); // A helper_plugin_authorlist object
-			if (!$my) return false; // Everything went well?
-			//$my->creatorisauthor = false;
+			if (!$al) return false; // Everything went well?
 			$al->setOptions($INFO['id'],$data);	// Set options. Data was created by the handle-mode. If empty, default are used.
 			$al->fetchAuthorsFromMetadata();
 			$al->sortAuthors();
@@ -105,7 +103,6 @@ class syntax_plugin_authorlist extends DokuWiki_Syntax_Plugin {
 			$al->renderAllAuthors();
             $al->finishList();
             $renderer->doc .= $al->getOutput();
-            //var_dump($my);
             return true;
         }
 

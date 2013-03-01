@@ -40,7 +40,7 @@ class helper_plugin_authorlist extends DokuWiki_Plugin
 	private $openTag;           // <li> or <span>
 	private $closeTag;			// </li> or </span>
 	private $printempty;        // Print everything even if the authorlist is empty
-	private $creatorisauthor = true;  // creator in the authorlist.
+	private $creatorisauthor;  // creator in the authorlist.
     
     /**
      * Constructor gets default preferences (calling setOptions(...))
@@ -67,7 +67,7 @@ class helper_plugin_authorlist extends DokuWiki_Plugin
     public function setOptions($pageID, $data){
 		$this->output='';
 		$this->pageID = $pageID;
-		$options = array('displayaslist','displaystyle','tooltip','showcreator','printempty');// possible options
+		$options = array('displayaslist','displaystyle','tooltip','showcreator','printempty', 'creatorisauthor');// possible options
 		foreach($options as $option){
 			if(isset($data[$option])){
 				$this->$option = $data[$option];
