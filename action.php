@@ -25,20 +25,26 @@ class action_plugin_authorlist extends DokuWiki_Action_Plugin{
     }
     
     /**
-     * Add heading and ~~AUTHORS~~ to each wikiside.
+     * Add heading and ~~AUTHORS~~ to each wikipage.
      */
     function appendAuthors(&$event, $param){
-		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false;
-		if($this->getConf('automatic')){
-			global $ACT;
-			if($ACT != 'show') return false;
+		global $ID;
+		global $ACT;
+		global $INFO;
+		//var_dump($INFO);
+		if(!page_exists($ID) && $ACT != 'preview' ) return false; // Don't show on "This topic does not exist yet" pages
+		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false; //Disabled manually 
+		if($this->getConf('automatic')){	// on every page by default?
+			//if($ACT != 'show') return false;
+			if(isset($INFO) && $ACT != 'preview') return false; // We are on a "real" wikipage, not 'Recent-', 'Login-', ...-page 
 			if($this->getConf('showheading'))  $event->data .= DOKU_LF."======".strip_tags($this->getConf('heading'))."======".DOKU_LF;
-			
 			$event->data .= "~~AUTHORS~~";
 			return true;
 		}
 	}
     
+    
+    // old stuff
     function renderAuthorlist(&$event, $param){
 		global $INFO;		
 		if($event->data != 'show' && $event->data != 'preview') return false;
