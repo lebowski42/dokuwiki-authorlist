@@ -36,7 +36,7 @@ class action_plugin_authorlist extends DokuWiki_Action_Plugin{
 		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false; //Disabled manually 
 		if($this->getConf('automatic')){	// on every page by default?
 			//if($ACT != 'show') return false;
-			if(isset($INFO) && $ACT != 'preview') return false; // We are on a "real" wikipage, not 'Recent-', 'Login-', ...-page 
+			if(isset($INFO) && $ACT != 'preview') return false; // We are on a "real" wikipage, not 'Recent-', 'Login-', ...-page
 			if($this->getConf('showheading'))  $event->data .= DOKU_LF."======".strip_tags($this->getConf('heading'))."======".DOKU_LF;
 			$event->data .= "~~AUTHORS~~";
 			return true;
