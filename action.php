@@ -22,8 +22,10 @@ class action_plugin_authorlist extends DokuWiki_Action_Plugin{
     function register(&$contr) {
        // $contr->register_hook('TPL_ACT_RENDER','AFTER',$this,'renderAuthorlist');
        $contr->register_hook('PARSER_WIKITEXT_PREPROCESS','BEFORE',$this,'appendAuthors');
+
     }
-    
+
+
     /**
      * Add heading and ~~AUTHORS~~ to each wikipage.
      */
@@ -32,7 +34,7 @@ class action_plugin_authorlist extends DokuWiki_Action_Plugin{
 		global $ACT;
 		global $INFO;
 		//var_dump($INFO);
-		if(!page_exists($ID) && $ACT != 'preview' ) return false; // Don't show on "This topic does not exist yet" pages
+		if(!page_exists($ID) && $ACT = 'preview' ) return false; // Don't show on "This topic does not exist yet" pages
 		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false; //Disabled manually 
 		if($this->getConf('automatic')){	// on every page by default?
 			//if($ACT != 'show') return false;
