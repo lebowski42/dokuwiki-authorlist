@@ -183,7 +183,7 @@ class helper_plugin_authorlist extends DokuWiki_Plugin
 	/**
     * Builds the html-code for one author (called for each author by renderAllAuthors())
     */
-	private function renderOneAuthor($loginname, $fullname=''){
+	public function renderOneAuthor($loginname, $fullname=''){
 		$loginname = htmlspecialchars($loginname);
 		$fullname = htmlspecialchars($fullname);
 		// Find text to display on the site.
@@ -288,7 +288,7 @@ class helper_plugin_authorlist extends DokuWiki_Plugin
     /**
     * Get the fullname for a given login name.
     */
-    private function getFullname($loginname){
+    public function getFullname($loginname){
 		global $auth;
 		$userdata = $auth->getUserData($loginname);
 		return $userdata['name'];
