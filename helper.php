@@ -134,7 +134,7 @@ class helper_plugin_authorlist extends DokuWiki_Plugin
 			if(!empty($creator) ) $this->addAuthor($creator,$creatorfullname);
 		}
 		// Authors from metadata
-		if(array_key_exists('contributor',$INFO['meta']))	$this->authors =  array_merge($INFO['meta']['contributor'],$this->authors);
+		if(isset($INFO) && array_key_exists('contributor',$INFO['meta']))	$this->authors =  array_merge($INFO['meta']['contributor'],$this->authors);
 	}
 	
 	/**
