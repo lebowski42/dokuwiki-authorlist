@@ -33,6 +33,8 @@ class action_plugin_authorlist extends DokuWiki_Action_Plugin{
 		global $ID;
 		global $ACT;
 		global $INFO;
+		global $conf;
+		if(preg_match('/'.$conf['sidebar'].'$/',$ID)) return false;
 		//var_dump($INFO);
 		if(!page_exists($ID) && $ACT = 'preview' ) return false; // Don't show on "This topic does not exist yet" pages
 		if(strpos($event->data, '~~AUTHORS:off~~') != false) return false; //Disabled manually 
