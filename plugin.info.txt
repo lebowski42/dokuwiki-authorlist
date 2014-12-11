@@ -1,7 +1,7 @@
 base authorlist
 author Martin Schulte
 email lebowski[at]corvus[dot]uberspace[dot]de
-date 2013-02-19
+date 2014-12-11
 name authorlist Plugin
 desc Displays all contributors/authors of a wikipage
-url http://dokuwiki.org/plugin:authorlist
+url https://dokuwiki.org/plugin:authorlist
