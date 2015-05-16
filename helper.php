@@ -45,7 +45,7 @@ class helper_plugin_authorlist extends DokuWiki_Plugin
     /**
      * Constructor gets default preferences (calling setOptions(...))
      */
-    public function helper_plugin_authorlist() {
+    public function __construct() {
 		global $INFO;
 		
 		// This options can only set using the admin menu. Because you can use html-Syntax for this options.
