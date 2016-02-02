@@ -19,7 +19,7 @@ require_once(DOKU_PLUGIN.'action.php');
 class action_plugin_authorlist extends DokuWiki_Action_Plugin{
 
 	
-    function register(&$contr) {
+    function register(Doku_Event_Handler $contr) {
        // $contr->register_hook('TPL_ACT_RENDER','AFTER',$this,'renderAuthorlist');
        $contr->register_hook('PARSER_WIKITEXT_PREPROCESS','BEFORE',$this,'appendAuthors');
 
